@@ -1,4 +1,5 @@
 import zipfile
+import datetime
 
 from MTX import parse_data, MTX2
 
@@ -10,6 +11,21 @@ def read_zip():
         with zip_ref.open(fn_csv) as f:
             return f.read()
 
+
+if __name__ == '__main__1':
+    s1 = '20220513_150022'
+    s2 = '20220513_150122'
+    print(type(s1))
+    d1 = datetime.datetime.strptime(s1, '%Y%m%d_%H%M%S')
+    d2 = datetime.datetime.strptime(s2, '%Y%m%d_%H%M%S')
+
+    print(int(d1.timestamp()))
+    print(int(d2.timestamp()))
+    print(d2.timestamp())
+
+    now = datetime.datetime.now()
+    print(now)
+    print(now.timestamp())
 
 if __name__ == '__main__':
     b = read_zip()
@@ -30,10 +46,10 @@ if __name__ == '__main__':
             continue
 
         count = count + 1
-        if count >= 3:
+        if count >= 5000:
             break
 
-        print(line)
+        # print(line)
 
         mtx = parse_data(cols)
         if mtx is None:
